@@ -1,7 +1,8 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import { Container, Placeholder } from "@/components/ui";
+import { Container } from "@/components/ui";
 import { PageHero } from "@/components/page-hero";
+import { ShopCarousel } from "@/components/shop-carousel";
 import { TrustBar } from "@/components/trust-bar";
 import { CtaBand } from "@/components/cta-band";
 import { pageMeta } from "@/lib/seo";
@@ -24,10 +25,15 @@ export default function AboutPage() {
       {/* STORY */}
       <section className="w-full">
         <Container className="grid items-center gap-10 py-16 sm:py-[72px] lg:grid-cols-2 lg:gap-14">
-          <Placeholder
-            label="Archival or current photo: the shop on New State Rd"
-            className="min-h-[300px] lg:min-h-[380px]"
-          />
+          <div className="relative min-h-[300px] w-full overflow-hidden border border-black/15 lg:min-h-[380px]">
+            <Image
+              src="/front2.jpg"
+              alt="Tony's Imported Auto Service on New State Rd in Manchester, CT"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
           <div>
             <h2 className="m-0 font-serif text-[26px] font-medium leading-[1.2] text-ink sm:text-[30px]">
               More than four decades on the same kind of cars.
@@ -117,20 +123,22 @@ export default function AboutPage() {
           <h2 className="mb-6 font-serif text-[24px] font-medium text-ink sm:text-[26px]">
             Inside the shop
           </h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
-            <Placeholder
-              label="Wide: service bays with cars on lifts"
-              className="h-[220px] sm:h-[230px]"
-            />
-            <Placeholder
-              label="Detail: diagnostic equipment"
-              className="h-[220px] sm:h-[230px]"
-            />
-            <Placeholder
-              label="Detail: parts / clean workbench"
-              className="h-[220px] sm:h-[230px]"
-            />
-          </div>
+          <ShopCarousel
+            images={[
+              {
+                src: "/inside2.jpg",
+                alt: "Service bays with cars on the lifts at Tony's Imported Auto Service",
+              },
+              {
+                src: "/inside1.jpg",
+                alt: "The front counter and European parts display",
+              },
+              {
+                src: "/interior-1.jpg",
+                alt: "A technician servicing a car in the bay",
+              },
+            ]}
+          />
         </Container>
       </section>
 
@@ -142,23 +150,23 @@ export default function AboutPage() {
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              "Role, years with Tony's",
-              "Role, ASE certified",
-              "Role",
-              "Role",
-            ].map((role, i) => (
-              <div key={i}>
-                <div className="relative aspect-[4/5] w-full overflow-hidden border border-black/15 bg-band">
-                  <Image
-                    src="/team/placeholder.jpg"
-                    alt="Team member portrait — photo coming soon"
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover"
-                  />
+              { name: "Mike", image: "/team/Mike.jpg", width: 500, height: 660 },
+              { name: "Devin", image: "/team/Devin.jpg", width: 492, height: 652 },
+              { name: "Dan", image: "/team/Dan.jpg", width: 500, height: 660 },
+              { name: "Carlos", image: "/team/Carlos.jpg", width: 500, height: 660 },
+            ].map((member) => (
+              <div key={member.name}>
+                <Image
+                  src={member.image}
+                  alt={`${member.name} — Tony's Imported Auto Service`}
+                  width={member.width}
+                  height={member.height}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="block h-auto w-full border border-black/15"
+                />
+                <div className="mt-3 font-sans text-[15px] font-semibold text-ink">
+                  {member.name}
                 </div>
-                <div className="mt-3 font-sans text-[15px] font-semibold text-ink">Name</div>
-                <div className="mt-0.5 font-sans text-[13px] text-muted-2">{role}</div>
               </div>
             ))}
           </div>

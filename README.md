@@ -108,3 +108,38 @@ Everything marked as a placeholder is easy to replace:
 
 Desktop nav collapses to a hamburger menu below `lg`; every multi-column grid reflows
 to one column on mobile; tap targets are ≥44px. Test at 375px, 768px, and 1280px widths.
+
+## Production hardening
+
+- **Security headers** (`next.config.ts`): `X-Content-Type-Options`, `X-Frame-Options`,
+  `Referrer-Policy`, `Strict-Transport-Security`, `Permissions-Policy`. `X-Powered-By`
+  is disabled; React strict mode is on.
+- **Error handling**: `app/error.tsx` (route errors) and `app/global-error.tsx`
+  (root-layout errors) show branded fallback UI; `app/not-found.tsx` is the 404.
+- **PWA basics**: `app/manifest.ts` (web manifest), `app/icon.svg` (favicon),
+  `app/apple-icon.png` (Apple touch icon, regenerate via
+  `node scripts/make-apple-icon.mjs`), and a `theme-color`.
+- **Accessibility**: skip-to-content link, one `<h1>` per page, visible focus rings,
+  labeled form fields, and a mobile menu that closes on Escape and locks body scroll.
+- **Privacy Policy** (`/privacy`, linked in the footer) — the appointment form collects
+  personal info, so this covers what's collected and how it's used. **Have the shop
+  owner / their counsel review the wording before launch.**
+
+## Launch checklist
+
+1. **Set the Web3Forms key** — `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in Vercel (see
+   "The appointment form" above). Until it's set the form shows a "not connected" notice.
+2. **Verify `site.geo`** — replace the approximate coordinates in `lib/site.ts` with the
+   exact lat/lng from the Google Business Profile.
+3. **Add real social + review URLs** in `lib/site.ts` (`social`, `reviewPlatforms`) —
+   they auto-populate `sameAs`, the footer links, and the Reviews page buttons.
+4. **Google Search Console** — verify the domain and submit `/sitemap.xml`. (Add the
+   verification token via `metadata.verification` in `app/layout.tsx` if using the
+   HTML-tag method.)
+5. **Claim/complete the Google Business Profile** — the single biggest local-SEO factor;
+   the name/address/phone/hours now match the site exactly.
+6. **Analytics (optional)** — none is installed (no tracking cookies). If you want it,
+   `@vercel/analytics` is a one-component drop-in on Vercel; update the Privacy Policy
+   if you add any analytics.
+7. **Swap remaining placeholders** — any `<Placeholder>` still showing the logo (Gallery
+   tiles, brand hero images) for real photos.

@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/reviews", 0.6, "weekly"],
     ["/faqs", 0.5, "yearly"],
     ["/gallery", 0.4, "monthly"],
+    ["/privacy", 0.2, "yearly"],
   ];
 
   return [

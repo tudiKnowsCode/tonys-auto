@@ -102,8 +102,11 @@ export function SiteFooter() {
         <div className="font-sans text-[11px] tracking-[0.02em] text-[#9a958c]">
           Independent &amp; family owned · European import specialists since {site.founded}
         </div>
-        <div className="font-sans text-[11px] text-faint">
-          © {new Date().getFullYear()} {site.name}
+        <div className="flex flex-wrap items-center gap-4 font-sans text-[11px] text-faint">
+          <Link href="/privacy" className="no-underline hover:text-ondark-strong">
+            Privacy Policy
+          </Link>
+          <span>© {new Date().getFullYear()} {site.name}</span>
         </div>
       </div>
     </footer>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo";
-import { Container, CtaButton, Placeholder, TextLink } from "@/components/ui";
+import { Container, CtaButton, TextLink } from "@/components/ui";
 import { BrandLogo } from "@/components/brand-logo";
 import { TrustBar } from "@/components/trust-bar";
 import { CtaBand } from "@/components/cta-band";
@@ -22,8 +22,8 @@ export default function HomePage() {
       {/* HERO */}
       <section className="relative w-full overflow-hidden bg-ink">
         <Image
-          src="/front.png"
-          alt="Tony's Imported Auto Service storefront"
+          src="/front2.jpg"
+          alt="Tony's Imported Auto Service storefront in Manchester, CT"
           fill
           priority
           sizes="100vw"
@@ -141,10 +141,15 @@ export default function HomePage() {
               href="/services/diagnostics"
               className="group hidden flex-col border border-black/15 bg-paper no-underline lg:flex"
             >
-              <Placeholder
-                label="Service photo: tech with diagnostic laptop on bay"
-                className="h-[240px] border-0 border-b border-black/15"
-              />
+              <div className="relative h-[240px] w-full overflow-hidden border-b border-black/15">
+                <Image
+                  src="/diagnostics.jpg"
+                  alt="Dashboard warning lights read with factory-level diagnostic tools"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 780px"
+                  className="object-cover"
+                />
+              </div>
               <div className="px-6 py-6">
                 <h3 className="m-0 font-serif text-[22px] font-semibold text-ink group-hover:text-accent">
                   Diagnostics

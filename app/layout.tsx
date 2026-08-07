@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Spectral, Archivo, Spline_Sans_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
@@ -44,10 +44,7 @@ export const metadata: Metadata = {
   publisher: site.name,
   category: "Automotive",
   formatDetection: { telephone: true, address: true, email: true },
-  icons: {
-    icon: "/icon.svg",
-    apple: "/icon.svg",
-  },
+  // Icons are auto-detected from app/icon.svg and app/apple-icon.png.
   keywords: [
     "European auto repair",
     "import car service Manchester CT",
@@ -76,7 +73,23 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -87,12 +100,21 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${spectral.variable} ${archivo.variable} ${splineMono.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-paper">
         <StructuredData />
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:border focus:border-accent-dark focus:bg-accent focus:px-4 focus:py-2 focus:font-sans focus:text-[14px] focus:font-semibold focus:text-white"
+        >
+          Skip to content
+        </a>
         <SiteHeader />
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1">
+          {children}
+        </main>
         <SiteFooter />
       </body>
     </html>
