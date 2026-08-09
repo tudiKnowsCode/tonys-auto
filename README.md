@@ -127,8 +127,10 @@ to one column on mobile; tap targets are ≥44px. Test at 375px, 768px, and 1280
 
 ## Launch checklist
 
-1. **Set the Web3Forms key** — `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in Vercel (see
-   "The appointment form" above). Until it's set the form shows a "not connected" notice.
+1. **Web3Forms key** — already configured. The public access key is baked into
+   `components/appointment-form.tsx` as the default (and in `.env.local` for dev), so
+   the form works in production with no extra Vercel config. Submissions go to
+   Tonysimportedauto@gmail.com. To rotate it, set `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`.
 2. **Verify `site.geo`** — replace the approximate coordinates in `lib/site.ts` with the
    exact lat/lng from the Google Business Profile.
 3. **Add real social + review URLs** in `lib/site.ts` (`social`, `reviewPlatforms`) —

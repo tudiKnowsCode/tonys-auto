@@ -4,10 +4,12 @@ import { useState } from "react";
 import { services } from "@/lib/services";
 import { site } from "@/lib/site";
 
-// Web3Forms access key. Get one free by entering Tonysimportedauto@gmail.com at
-// https://web3forms.com — submissions are then emailed to that inbox.
-// Set NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY in .env.local (and in Vercel).
-const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
+// Web3Forms access key (a PUBLIC key by design — safe in client code).
+// Submissions are emailed to Tonysimportedauto@gmail.com. Override via
+// NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY if the key ever changes.
+const ACCESS_KEY =
+  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ??
+  "44e6e08a-ed9a-465c-884d-2429287697de";
 
 type Status = "idle" | "submitting" | "success" | "error";
 

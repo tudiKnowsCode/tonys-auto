@@ -30,6 +30,7 @@ export default function AboutPage() {
               src="/front2.jpg"
               alt="Tony's Imported Auto Service on New State Rd in Manchester, CT"
               fill
+              priority
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />

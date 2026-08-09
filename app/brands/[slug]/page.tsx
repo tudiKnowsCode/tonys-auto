@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { Container, CtaButton, Placeholder } from "@/components/ui";
+import Image from "next/image";
+import { Container, CtaButton } from "@/components/ui";
 import { TrustBar } from "@/components/trust-bar";
 import { CtaBand } from "@/components/cta-band";
 import { brands, getBrand } from "@/lib/brands";
@@ -65,10 +66,17 @@ export default async function BrandDetailPage({
             </p>
             <CtaButton href="/contact">Request an Appointment</CtaButton>
           </div>
-          <Placeholder
-            label={brand.heroImageHint}
-            className="min-h-[240px] lg:min-h-[300px]"
-          />
+          <div className="relative min-h-[240px] w-full overflow-hidden border border-white/15 lg:min-h-[300px]">
+            <Image
+              src={brand.heroImage}
+              alt={`${brand.name} serviced at Tony's Imported Auto Service in Manchester, CT`}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+              style={{ objectPosition: brand.heroPosition ?? "center" }}
+            />
+          </div>
         </Container>
       </section>
 

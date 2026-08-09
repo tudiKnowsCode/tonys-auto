@@ -6,6 +6,10 @@ export interface Brand {
   name: string;
   /** Logo image in /public/brands. Displayed object-contain in a uniform tile. */
   logo: string;
+  /** Hero photo in /public/brands, shown on the brand detail page. */
+  heroImage: string;
+  /** object-position for the hero crop (default "center"). */
+  heroPosition?: string;
   /** Model line-up, shown on the brands index and in hero copy. */
   models: string;
   heroTitle: string;
@@ -22,6 +26,7 @@ export const brands: Brand[] = [
     slug: "audi",
     name: "Audi",
     logo: "/brands/audi.png",
+    heroImage: "/brands/audi-hero.jpg",
     models: "A3 through A8, Q models, S and RS.",
     heroTitle: "Audi service & repair in Manchester, CT",
     heroSubtitle:
@@ -43,6 +48,7 @@ export const brands: Brand[] = [
     slug: "bmw",
     name: "BMW",
     logo: "/brands/bmw.webp",
+    heroImage: "/brands/bmw-hero.jpg",
     models: "3, 5, 7 Series, X models, and M variants.",
     heroTitle: "BMW service & repair in Manchester, CT",
     heroSubtitle:
@@ -64,6 +70,7 @@ export const brands: Brand[] = [
     slug: "mercedes-benz",
     name: "Mercedes-Benz",
     logo: "/brands/mercedes.png",
+    heroImage: "/brands/mercedes-hero.jpg",
     models: "C, E, S, GLC, GLE, and AMG models.",
     heroTitle: "Mercedes-Benz service & repair in Manchester, CT",
     heroSubtitle:
@@ -85,6 +92,7 @@ export const brands: Brand[] = [
     slug: "jaguar",
     name: "Jaguar",
     logo: "/brands/jaguar.png",
+    heroImage: "/brands/jaguar-hero.jpg",
     models: "XE, XF, XJ, F-Type, F-Pace, and E-Pace.",
     heroTitle: "Jaguar service & repair in Manchester, CT",
     heroSubtitle:
@@ -106,6 +114,7 @@ export const brands: Brand[] = [
     slug: "porsche",
     name: "Porsche",
     logo: "/brands/porsche.png",
+    heroImage: "/brands/porsche-hero.jpg",
     models: "911, Boxster, Cayman, Cayenne, Macan, Panamera.",
     heroTitle: "Porsche service & repair in Manchester, CT",
     heroSubtitle:
@@ -127,6 +136,8 @@ export const brands: Brand[] = [
     slug: "land-rover",
     name: "Land Rover",
     logo: "/brands/land-rover.png",
+    heroImage: "/brands/land-rover-hero.jpg",
+    heroPosition: "center 72%",
     models: "Range Rover, Sport, Velar, Evoque, and Discovery.",
     heroTitle: "Land Rover service & repair in Manchester, CT",
     heroSubtitle:

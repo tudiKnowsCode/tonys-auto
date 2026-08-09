@@ -22,6 +22,12 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   reactStrictMode: true,
   poweredByHeader: false,
+  images: {
+    // AVIF (then WebP fallback) delivers the smallest files to modern browsers.
+    formats: ["image/avif", "image/webp"],
+    // Cache optimized images for 31 days to minimize re-optimization.
+    minimumCacheTTL: 2678400,
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
